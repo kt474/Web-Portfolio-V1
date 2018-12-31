@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html class="no-js" lang="">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kevin Tian</title>
+    <meta name="description" content="" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <!-- for projects section -->
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+    <!-- for box animations -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+
+    <link rel="manifest" href="site.webmanifest" />
+    <link rel="apple-touch-icon" href="icon.png" />
+    <!-- Place favicon.ico in the root directory -->
+    <link rel="shortcut icon" href="favi.ico" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Source+Sans+Pro"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Inconsolata"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link
+      rel="stylesheet"
+      media="screen and (min-width: 501px)"
+      href="css/main.css"
+    />
+    <link
+      rel="stylesheet"
+      media="screen and (max-width: 500px)"
+      href="css/mobile.css"
+    />
+  </head>
+
+  <body>
+    <!-- background animation vectors -->
+    <div id="particles-js"></div>
+    <!--[if lte IE 9]>
+      <p class="browserupgrade">
+        You are using an <strong>outdated</strong> browser. Please
+        <a href="https://browsehappy.com/">upgrade your browser</a> to improve
+        your experience and security.
+      </p>
+    <![endif]-->
+
+    <!-- Add your site or application content here -->
+    <div id="main">
+      <div id="intro">
+        <p id="hi">Hello<span id="comma">,</span></p>
+
+        <p id="kevin">I'm Kevin<span id="period">.</span></p>
+      </div>
+      <p id="arrow" class="bounce hidden">&#711;</p>
+
+      <!-- start about me section -->
+      <p id="about">About Me</p>
+
+      <div class="w3-row-padding" id="aboutdivs">
+        <div class="w3-third aboutme" id="changewidth">
+          <p id="filler">
+            Hi! My name is Kevin and I'm currently a computer science student at
+            Cornell University. Welcome to my web portfolio, created from
+            scratch. A few of my favorite website and data visualization
+            projects are shown below. They are also all available on my Github
+            (any feedback is appreciated). Outside of the technical world, I
+            enjoy camping, hiking, and <a id="myBtn"><u>speedcubing</u></a
+            >.
+          </p>
+          <!-- pop up thing -->
+        </div>
+        <div id="myModal" class="modal">
+          <!-- Modal content -->
+          <div class="modal-content">
+            <!-- <span class="close">&times;</span> -->
+            <iframe
+              width="560"
+              height="315"
+              src="https://www.youtube.com/embed/vE0ZIT4UHCw?rel=0"
+              frameborder="0"
+              allow="autoplay; encrypted-media"
+              allowfullscreen
+            ></iframe>
+          </div>
+        </div>
+        <div class="w3-third aboutme" id="changewidth2">
+          <p id="skills">Skills</p>
+          <ul>
+            <li>Javascript, D3.js, React.js</li>
+            <li>HTML/CSS</li>
+            <li>Python, R, Excel</li>
+            <li>Java</li>
+            <li>Adobe Illustrator, Photoshop, XD</li>
+          </ul>
+        </div>
+      </div>
+      <!-- start projects -->
+      <p id="projects">Projects<span>:</span></p>
+
+      <div class="w3-row-padding" id="port">
+        <div class="w3-container" id="d3_label">
+          <p><a href="https://d3js.org/">D3.js</a></p>
+        </div>
+        <div class="w3-third grow" id="col1">
+          <h2>Fast Food Nutrition</h2>
+          <a href="d3/nut/index.html"
+            ><img src="img/nutrition.png" width="270" height="170"
+          /></a>
+        </div>
+        <div class=" w3-third grow" id="col1">
+          <h2>Hip Hop & Trump</h2>
+          <a href="d3/p1/index.html"
+            ><img src="img/trump.png" width="270" height="170"
+          /></a>
+        </div>
+        <div class="w3-third grow" id="col1">
+          <h2>American Colleges</h2>
+          <a href="d3/p2/index.html"
+            ><img src="img/college.png" width="270" height="170"
+          /></a>
+        </div>
+      </div>
+      <div class="w3-row-padding" id="port">
+        <div class="w3-third grow" id="col1">
+          <h2>1000 Digits of Pi</h2>
+          <a href="d3/pi/index.html"
+            ><img src="img/pidigits.png" width="270" height="170"
+          /></a>
+        </div>
+        <div class="w3-third grow" id="col1">
+          <h2>Pi Visual</h2>
+          <a href="d3/display/display.html"
+            ><img src="img/pivisual.png" width="270" height="170"
+          /></a>
+        </div>
+        <div class="w3-third grow" id="col1">
+          <h2>Causes of Death</h2>
+          <a href="d3/deaths/index.html"
+            ><img src="img/deaths.png" width="270" height="160"
+          /></a>
+        </div>
+      </div>
+      <div class="w3-row-padding" id="port">
+        <div class="w3-third grow" id="col1">
+          <h2>Do You Worry?</h2>
+          <a href="d3/male/index.html"
+            ><img src="img/worry.png" width="270" height="170"
+          /></a>
+        </div>
+        <div class="w3-third grow" id="col1">
+          <h2>Stack OverFlow</h2>
+          <a href="d3/5306_P1/index.html"
+            ><img src="img/stackoverflow.png" width="270" height="170"
+          /></a>
+        </div>
+        <div class="w3-third grow" id="col1">
+          <h2>Cube Timer</h2>
+          <a href="d3/timer/index.html"
+            ><img src="img/timer.png" width="270" height="170"
+          /></a>
+        </div>
+      </div>
+      <div class="w3-row-padding" id="port">
+        <div class="w3-container" id="d3_label2">
+          <p><a href="https://reactjs.org/">React.js</a></p>
+        </div>
+        <div class="w3-third grow" id="col1">
+          <h2>Weather API</h2>
+          <a href="https://weatherapi-project.herokuapp.com/"
+            ><img src="img/weather.png" width="270" height="170"
+          /></a>
+        </div>
+        <div class="w3-third grow" id="col1">
+          <h2>Recipe API</h2>
+          <a href="https://recipeapi-search.herokuapp.com"
+            ><img src="img/recipe.png" width="270" height="170"
+          /></a>
+        </div>
+      </div>
+      <div class="w3-row-padding" id="port">
+        <div class="w3-container" id="d3_label2"><p>Other</p></div>
+        <div class="w3-third grow" id="col1">
+          <h2>Phaser Platformer</h2>
+          <a href="start/index.html"
+            ><img src="img/phaser.png" width="270" height="170"
+          /></a>
+        </div>
+
+        <div class="w3-third grow" id="col1">
+          <h2>Hanabi Card Game</h2>
+          <img src="img/perfectgame.png" width="270" height="150" />
+        </div>
+        <div class="w3-third grow" id="col1">
+          <h2>AI & Sports</h2>
+          <a href="img/FinalArticle.pdf"
+            ><img src="img/sports.png" width="270" height="140"
+          /></a>
+        </div>
+      </div>
+    </div>
+    <!-- end div main -->
+
+    <div id="side" class="sidebar">
+      <p id="links3"><a href="mailto:kt474@cornell.edu">Email</a></p>
+      <p id="links">
+        <a href="https://www.linkedin.com/" target="_blank">LinkedIn</a>
+      </p>
+      <p id="links2">
+        <a href="https://github.com/kt474/D3-Projects" target="_blank"
+          >Github</a
+        >
+      </p>
+      <p id="links">
+        <a href="https://www.instagram.com/kevkevkt/?hl=en" target="_blank"
+          >Instagram</a
+        >
+      </p>
+    </div>
+    <!-- end div side -->
+    <script src="js/vendor/modernizr-3.6.0.min.js "></script>
+    <!-- animation stuff -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js "></script>
+
+    <!-- animation for intro text -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.min.js "
+      integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+      crossorigin=" anonymous "
+    ></script>
+    <script>
+      window.jQuery ||
+        document.write(
+          '<script src="js/vendor/jquery-3.3.1.min.js "><\/script>'
+        );
+    </script>
+
+    <script src="js/plugins.js "></script>
+    <script src="js/main.js "></script>
+
+    <!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
+    <script>
+      AOS.init();
+
+      window.ga = function() {
+        ga.q.push(arguments);
+      };
+      ga.q = [];
+      ga.l = +new Date();
+      ga("create", "UA-XXXXX-Y", "auto");
+      ga("send", "pageview");
+    </script>
+    <script
+      src="https://www.google-analytics.com/analytics.js "
+      async
+      defer
+    ></script>
+  </body>
+</html>

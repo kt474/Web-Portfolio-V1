@@ -1,0 +1,477 @@
+<!-- information/text taken from many sources including: https://www.elitedaily.com/life/motivation/10-things-all-20-somethings-worry-about,
+https://www.psychologicalhealthcare.com.au/blog/youre-not-alone-top-things-people-worry-most-about/
+ -->
+<html>
+<head>
+  <title>Worries</title>
+  <script src="https://d3js.org/d3.v4.min.js"></script>
+  <script src="//d3js.org/d3-scale-chromatic.v0.3.min.js"></script>
+  <script src = 'cloud.js'></script>
+  <link href="https://fonts.googleapis.com/css?family=PT+Sans" rel="stylesheet">
+  <link rel = 'shortcut icon' href = 'favi.ico'>
+  <style>
+    *{
+      font-family: 'PT Sans', sans-serif;
+    }
+    svg {
+      /* border: 1px solid #ccc; */
+      display: block;
+      margin: auto;
+    }
+    h1{
+      text-align: center;
+    }
+    rect:hover{
+      opacity: 0.7;
+    }
+    body {
+      background-color: #D7EFEF;
+    }
+  </style>
+</head>
+<body>
+  <h1>What Do You Worry About?</h1>
+  <div id = 'main'>
+    <script>
+      var width = 1400;
+      var height = 2000;
+      var padding = 40;
+      var colorScale = d3.schemeCategory10;
+      //console.log(colorScale[2]);
+      var svg = d3.select('#main')
+        .append('svg')
+        .attr('height', height)
+        .attr('width', width);
+      //headings
+      svg.append('text')
+        .attr('x', 445)
+        .attr('y', 15)
+        .attr('font-style', 'italic')
+        .text('Data taken from fivethirtyeight where over 1600 adult men were surveyed')
+
+      d3.queue()
+        .defer(d3.csv, 'worry.csv')
+        .await(display);
+      function display(error, male){
+        data = male;
+        console.log(data)
+        //console.log(data);
+        for(var i = 0; i < data.length; i++){
+          svg.append('rect')
+            .attr('x', 660 - 20 * i)
+            .attr('y', 750 + 32 * i + 5)
+            .attr('width', 100 + 40 * i)
+            .attr('height', 30)
+            .attr('opacity', 0.9)
+            .attr('fill', '#E53434')
+          }
+        for(var j = 19; j >= 0; j--){
+          svg.append('text')
+            .attr('x', 710)
+            .attr('y', 1378 - 32 * j + 5)
+            .attr('text-anchor', 'middle')
+            .text(data[j].worry)
+        }
+      }
+
+      var xScale = d3.scaleLinear()
+        .domain([0, 100])
+        .range([padding, width/2 - padding]);
+      var yScale = d3.scaleLinear()
+        .domain([0, 100])
+        .range([700 - padding, 60]);
+      //headings
+      svg.append('text')
+        .attr('x', 350)
+        .attr('y', 100)
+        .attr('font-size', 35)
+        .text('White');
+      svg.append('text')
+        .attr('x', 990)
+        .attr('y', 100)
+        .attr('font-size', 35)
+        .text('Non-white');
+      // left scales
+      svg.append('g')
+        .attr('stroke-width', 3)
+        .attr('transform', 'translate(0,' + (700 - padding) + ')')
+        .call(d3.axisBottom(xScale).ticks(5));
+      svg.append('g')
+        .attr('stroke-width', 3)
+        .attr('transform', 'translate(' + (padding) + ',' + '0)')
+        .call(d3.axisLeft(yScale).tickValues([0]));
+      // right scales
+      svg.append('g')
+        .attr('stroke-width', 3)
+        .attr('transform', 'translate(700,' + (700 - padding) + ')')
+        .call(d3.axisBottom(xScale).ticks(5));
+      svg.append('g')
+        .attr('stroke-width', 3)
+        .attr('transform', 'translate(' + (width/2 + padding) + ',' + '0)')
+        .call(d3.axisLeft(yScale).tickValues([0]));
+      //start appending bars and text left side
+      svg.append('rect')
+        .attr('x', 42)
+        .attr('y', 160)
+        .attr('height', 25)
+        .attr('width', xScale(54))
+        .attr('fill', '#475CE0')
+      svg.append('text')
+        .attr('x', 420)
+        .attr('y', 177)
+        .text('54% Finance')
+      svg.append('rect')
+        .attr('x', 42)
+        .attr('y', 200)
+        .attr('height', 25)
+        .attr('width', xScale(53))
+        .attr('fill', '#475CE0')
+      svg.append('text')
+        .attr('x', 415)
+        .attr('y', 217)
+        .text('53% Weight')
+      svg.append('rect')
+        .attr('x', 42)
+        .attr('y', 240)
+        .attr('height', 25)
+        .attr('width', xScale(53))
+        .attr('fill', '#475CE0')
+      svg.append('text')
+        .attr('x', 415)
+        .attr('y', 257)
+        .text('53% Physical Health')
+      svg.append('rect')
+        .attr('x', 42)
+        .attr('y', 280)
+        .attr('height', 25)
+        .attr('width', xScale(35))
+        .attr('fill', '#475CE0')
+      svg.append('text')
+        .attr('x', 303)
+        .attr('y', 297)
+        .text('35% Physique')
+      svg.append('rect')
+        .attr('x', 42)
+        .attr('y', 320)
+        .attr('height', 25)
+        .attr('width', xScale(33))
+        .attr('fill', '#475CE0')
+      svg.append('text')
+        .attr('x', 290)
+        .attr('y', 337)
+        .text('33% Mental Health')
+      svg.append('rect')
+        .attr('x', 42)
+        .attr('y', 360)
+        .attr('height', 25)
+        .attr('width', xScale(31))
+        .attr('fill', '#475CE0')
+      svg.append('text')
+        .attr('x', 282)
+        .attr('y', 377)
+        .text('31% Family')
+      svg.append('rect')
+        .attr('x', 42)
+        .attr('y', 400)
+        .attr('height', 25)
+        .attr('width', xScale(23))
+        .attr('fill', '#475CE0')
+      svg.append('text')
+        .attr('x', 232)
+        .attr('y', 417)
+        .text('23% Sexual Performance')
+      svg.append('rect')
+        .attr('x', 42)
+        .attr('y', 440)
+        .attr('height', 25)
+        .attr('width', xScale(17))
+        .attr('fill', '#475CE0')
+      svg.append('text')
+        .attr('x', 192)
+        .attr('y', 457)
+        .text('17% Hair/Hairline')
+      svg.append('rect')
+        .attr('x', 42)
+        .attr('y', 480)
+        .attr('height', 25)
+        .attr('width', xScale(15))
+        .attr('fill', '#475CE0')
+      svg.append('text')
+        .attr('x', 180)
+        .attr('y', 497)
+        .text('15% Clothing/Style')
+      svg.append('rect')
+        .attr('x', 42)
+        .attr('y', 520)
+        .attr('height', 25)
+        .attr('width', xScale(14))
+        .attr('fill', '#475CE0')
+      svg.append('text')
+        .attr('x', 175)
+        .attr('y', 537)
+        .text('14% Nothing')
+      svg.append('rect')
+        .attr('x', 42)
+        .attr('y', 560)
+        .attr('height', 25)
+        .attr('width', xScale(13))
+        .attr('fill', '#475CE0')
+      svg.append('text')
+        .attr('x', 170)
+        .attr('y', 577)
+        .text('13% Appearance of Genitalia')
+      svg.append('rect')
+        .attr('x', 42)
+        .attr('y', 600)
+        .attr('height', 25)
+        .attr('width', xScale(4))
+        .attr('fill', '#475CE0')
+      svg.append('text')
+        .attr('x', 112)
+        .attr('y', 617)
+        .text('4% Height')
+      //start right side rects/text
+      svg.append('rect')
+        .attr('x', 742)
+        .attr('y', 160)
+        .attr('height', 25)
+        .attr('width', xScale(56))
+        .attr('fill', '#475CE0')
+      svg.append('text')
+        .attr('x', 1133)
+        .attr('y', 177)
+        .text('56% Weight')
+      svg.append('rect')
+        .attr('x', 742)
+        .attr('y', 200)
+        .attr('height', 25)
+        .attr('width', xScale(51))
+        .attr('fill', '#475CE0')
+      svg.append('text')
+        .attr('x', 1102)
+        .attr('y', 217)
+        .text('51% Finance')
+      svg.append('rect')
+        .attr('x', 742)
+        .attr('y', 240)
+        .attr('height', 25)
+        .attr('width', xScale(43))
+        .attr('fill', '#475CE0')
+      svg.append('text')
+        .attr('x',1055)
+        .attr('y', 257)
+        .text('43% Physical Health')
+      svg.append('rect')
+        .attr('x', 742)
+        .attr('y', 280)
+        .attr('height', 25)
+        .attr('width', xScale(35))
+        .attr('fill', '#475CE0')
+      svg.append('text')
+        .attr('x', 1003)
+        .attr('y', 297)
+        .text('35% Family')
+      svg.append('rect')
+        .attr('x', 742)
+        .attr('y', 320)
+        .attr('height', 25)
+        .attr('width', xScale(31))
+        .attr('fill', '#475CE0')
+      svg.append('text')
+        .attr('x', 977)
+        .attr('y', 337)
+        .text('31% Physique')
+      svg.append('rect')
+        .attr('x', 742)
+        .attr('y', 360)
+        .attr('height', 25)
+        .attr('width', xScale(30))
+        .attr('fill', '#475CE0')
+      svg.append('text')
+        .attr('x', 972)
+        .attr('y', 377)
+        .text('30% Mental Health')
+      svg.append('rect')
+        .attr('x', 742)
+        .attr('y', 400)
+        .attr('height', 25)
+        .attr('width', xScale(26))
+        .attr('fill', '#475CE0')
+      svg.append('text')
+        .attr('x', 945)
+        .attr('y', 417)
+        .text('26% Clothing/Style')
+      svg.append('rect')
+        .attr('x', 742)
+        .attr('y', 440)
+        .attr('height', 25)
+        .attr('width', xScale(25))
+        .attr('fill', '#475CE0')
+      svg.append('text')
+        .attr('x', 940)
+        .attr('y', 457)
+        .text('25% Sexual Performance')
+      svg.append('rect')
+        .attr('x', 742)
+        .attr('y', 480)
+        .attr('height', 25)
+        .attr('width', xScale(23))
+        .attr('fill', '#475CE0')
+      svg.append('text')
+        .attr('x', 930)
+        .attr('y', 497)
+        .text('23% Hair/Hairline')
+      svg.append('rect')
+        .attr('x', 742)
+        .attr('y', 520)
+        .attr('height', 25)
+        .attr('width', xScale(12))
+        .attr('fill', '#475CE0')
+      svg.append('text')
+        .attr('x', 860)
+        .attr('y', 537)
+        .text('12% Appearance of Genitalia')
+      svg.append('rect')
+        .attr('x', 742)
+        .attr('y', 560)
+        .attr('height', 25)
+        .attr('width', xScale(10))
+        .attr('fill', '#475CE0')
+      svg.append('text')
+        .attr('x', 847)
+        .attr('y', 577)
+        .text('10% Nothing')
+      svg.append('rect')
+        .attr('x', 742)
+        .attr('y', 600)
+        .attr('height', 25)
+        .attr('width', xScale(10))
+        .attr('fill', '#475CE0')
+      svg.append('text')
+        .attr('x', 847)
+        .attr('y', 617)
+        .text('10% Height')
+      //second half side text
+      svg.append('text')
+        .attr('x', 80)
+        .attr('y', 770)
+        .text('2000 people were given a list of 30 common worries');
+      svg.append('text')
+        .attr('x', 80)
+        .attr('y', 790)
+        .text('and asked to choose those that applied to them.');
+      svg.append('text')
+        .attr('x', 80)
+        .attr('y', 810)
+        .text("'Getting old' was the most-commonly selected option.")
+      svg.append('text')
+        .attr('x', 80)
+        .attr('y', 830)
+        .text('The same survey also found 42 per cent of people');
+      svg.append('text')
+        .attr('x', 80)
+        .attr('y', 850)
+        .text('are unhappy with their lives.')
+      //start word cloud attempt
+      svg.append('text')
+        .attr('x', 400)
+        .attr('y', 1500)
+        .attr('fill', '#6E37A5')
+        .attr('font-size', 40)
+        .attr('transform', 'rotate(50, 400, 1500)')
+        .text('How will I pay the bills?');
+      svg.append('text')
+        .attr('x', 800)
+        .attr('y', 1660)
+        .attr('fill', '#D3363B')
+        .attr('font-size', 40)
+        .attr('transform', 'rotate(330, 800, 1660)')
+        .text('Will I find the right one?');
+      svg.append('text')
+        .attr('x', 445)
+        .attr('y', 1985)
+        .attr('fill', '#1590CA')
+        .attr('font-size', 40)
+        .attr('transform', 'rotate(-30, 445, 1985)')
+        .text('What do I want to achieve?');
+      svg.append('text')
+        .attr('x', 690)
+        .attr('y', 1640)
+        .attr('fill', '#413B3A')
+        .attr('font-size', 40)
+        .attr('transform', 'rotate(30, 690, 1640)')
+        .text('How is my family doing?');
+      svg.append('text')
+        .attr('x', 400)
+        .attr('y', 1550)
+        .attr('fill', '#15C650')
+        .attr('font-size', 40)
+        .attr('transform', 'rotate(100, 400, 1550)')
+        .text('What can I do to help?');
+      svg.append('text')
+        .attr('x', 300)
+        .attr('y', 1450)
+        .attr('fill', '#EA7919')
+        .attr('font-size', 40)
+        .attr('transform', 'rotate(10, 300, 1450)')
+        .text('When will it get better?');
+      svg.append('text')
+        .attr('x', 650)
+        .attr('y', 1930)
+        .attr('fill', '#6EEBC9')
+        .attr('font-size', 40)
+        .attr('transform', 'rotate(-10, 650, 1930)')
+        .text('Why am I like this?');
+      svg.append('text')
+        .attr('x', 950)
+        .attr('y', 1700)
+        .attr('fill', '#F4CC06')
+        .attr('font-size', 40)
+        .attr('transform', 'rotate(20, 950, 1700)')
+        .text('Is it my fault?');
+      svg.append('text')
+        .attr('x', 620)
+        .attr('y', 1670)
+        .attr('fill', '#08D6E2')
+        .attr('font-size', 40)
+        .attr('transform', 'rotate(320, 620, 1670)')
+        .text('Where is my passion?');
+      //side text blurb
+      svg.append('text')
+        .attr('x', 10)
+        .attr('y', 1480)
+        .text('Worry, the sense of insecurity, unease,');
+      svg.append('text')
+        .attr('x', 10)
+        .attr('y', 1500)
+        .text('and fear over what negative events may');
+      svg.append('text')
+        .attr('x', 10)
+        .attr('y', 1520)
+        .text('happen - as unrealistic as these concerns');
+      svg.append('text')
+        .attr('x', 10)
+        .attr('y', 1540)
+        .text('may be - is one of the most unpleasant emotions');
+      svg.append('text')
+        .attr('x', 10)
+        .attr('y', 1560)
+        .text('that you can experience.');
+      svg.append('text')
+        .attr('x', 10)
+        .attr('y', 1580)
+        .text("If you worry often, you're far from alone. In fact,");
+      svg.append('text')
+        .attr('x', 10)
+        .attr('y', 1600)
+        .text('it may comfort you to know that many of us');
+      svg.append('text')
+        .attr('x', 10)
+        .attr('y', 1620)
+        .text('tend to worry about the same issues.')
+
+    </script>
+  </div><!-- end div main -->
+</body>
+
+</html>
